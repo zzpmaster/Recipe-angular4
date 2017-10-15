@@ -10,7 +10,7 @@ import { ShoppingListService } from '../shopping-list.service';
 })
 export class ShoppingEditComponent implements OnInit {
 
-  @ViewChild('nameInput') nameInputRef: ElementRef;
+  @ViewChild('nameInput') nameInputRef: ElementRef;     //ViewChild 处理html中#xxx的
   @ViewChild('amountInput') amountInputRef: ElementRef;
 
   // @Output() ingredientAdded = new EventEmitter<Ingredient>();

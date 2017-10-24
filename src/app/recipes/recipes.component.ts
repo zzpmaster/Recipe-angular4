@@ -7,7 +7,7 @@ import { Recipe } from './recipes.model';
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
   styleUrls: ['./recipes.component.css'],
-  providers: [ RecipesService ]
+  // providers: [ RecipesService ] // 如果在component中定义providers，在路由切换后，service会重新初始化，也就是说数据将还原
 })
 export class RecipesComponent implements OnInit {
 

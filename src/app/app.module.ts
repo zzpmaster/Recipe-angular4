@@ -16,6 +16,11 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { RecipesStartComponent } from './recipes/recipes-start/recipes-start.component';
 import { RecipesEditComponent } from './recipes/recipes-edit/recipes-edit.component';
 import { RecipesService } from './recipes/recipes.service';
+import { DataStorageService } from './shared/data-storage.service';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
+
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,9 @@ import { RecipesService } from './recipes/recipes.service';
     ShoppingListComponent,
     ShoppingEditComponent,
     RecipesStartComponent,
-    RecipesEditComponent
+    RecipesEditComponent,
+    SignupComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +44,7 @@ import { RecipesService } from './recipes/recipes.service';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [ShoppingListService, RecipesService],
+  providers: [ShoppingListService, RecipesService, DataStorageService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

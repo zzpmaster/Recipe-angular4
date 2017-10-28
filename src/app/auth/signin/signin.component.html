@@ -1,0 +1,18 @@
+<div class="row">
+    <!--一共切分12分，div占8个位置，并且偏移2个（也就是居中）-->
+    <div class="col-xs-12 col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">
+      <form (ngSubmit)="onSignin(f)" #f="ngForm">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" ngModel class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" ngModel class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Sign In</button>
+      </form>
+    </div>
+  </div>
+  
+  

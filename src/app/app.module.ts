@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+// import { HttpModule } from '@angular/http';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 // import { RecipesModule } from './recipes/recipes.module';
@@ -24,7 +25,8 @@ import { AuthGuardService } from './auth/auth-guard.service';
   ],
   imports: [
     BrowserModule,
-    HttpModule,
+    // HttpModule,
+    HttpClientModule,
     AppRoutingModule,
     // RecipesModule, //注意： 如果需要懒加载，就不需要在imports中引用
     SharedModule,

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 
@@ -11,6 +13,8 @@ import { RecipesService } from '../recipes/recipes.service';
 import { DataStorageService } from '../shared/data-storage.service';
 import { AuthService } from '../auth/auth.service';
 import { AuthGuardService } from '../auth/auth-guard.service';
+import {AuthInterceptor} from '../shared/auth.interceptor';
+import {LoggingIntercepter} from '../shared/logging.interceptor';
 
 @NgModule({
     declarations: [
@@ -30,9 +34,13 @@ import { AuthGuardService } from '../auth/auth-guard.service';
         RecipesService, 
         DataStorageService, 
         AuthService, 
-        AuthGuardService
+        AuthGuardService,
+        // 告诉angularHTTP_INTERCEPTORS是一个数组，不是一个单个的值
+        {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+        {provide: HTTP_INTERCEPTORS, useClass: LoggingIntercepter, multi: true}
     ]
 })
+    
 export class CoreModule {
 
 }

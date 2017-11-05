@@ -9,6 +9,7 @@ import { SharedModule } from './shared/shared.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
+import {StoreModule} from '@ngrx/store';
 
 import { AppComponent } from './app.component';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
@@ -18,6 +19,7 @@ import { DataStorageService } from './shared/data-storage.service';
 import { AuthService } from './auth/auth.service';
 import { AuthGuardService } from './auth/auth-guard.service';
 
+import {shoppingListReducer} from './shopping-list/store/shopping-list.reducers';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { AuthGuardService } from './auth/auth-guard.service';
     SharedModule,
     ShoppingListModule,
     AuthModule,
-    CoreModule
+    CoreModule,
+    StoreModule.forRoot({shoppingList: shoppingListReducer})
   ],
   // providers: [ShoppingListService, RecipesService, DataStorageService, AuthService, AuthGuardService],
   providers: [],

@@ -23,11 +23,13 @@ export class ShoppingListService {
         return this.ingredients[index];
     }
 
+    // deprecated
     addIngredient(ingredient: Ingredient) {
         this.ingredients.push(ingredient);
         this.ingredientsChanged.next(this.ingredients.slice());
     }
 
+    // deprecated
     addIngredients(ingredients: Ingredient[]) {
         // ingredients.forEach((ingredient) => {
         //     this.addIngredient(ingredient);
@@ -36,11 +38,13 @@ export class ShoppingListService {
         this.ingredientsChanged.next(this.ingredients.slice());
     }
 
+    // deprecated
     updateIngredient(index: number, newIngredient: Ingredient) {
         this.ingredients[index] = newIngredient;
         this.ingredientsChanged.next(this.ingredients.slice());
     }
 
+    // deprecated
     deleteIngredient(index: number) {
         this.ingredients.splice(index, 1);
         this.ingredientsChanged.next(this.ingredients.slice());

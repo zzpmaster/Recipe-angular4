@@ -2,10 +2,6 @@ import * as ShoppingListActions from './shopping-list.actions';
 
 import { Ingredient } from '../../shared/ingredient.model';
 
-export interface AppState {
-    shoppingList: State
-}
-
 export interface State {
     ingredients: Ingredient[];
     editedIngredient: Ingredient;
@@ -51,14 +47,18 @@ export function shoppingListReducer(state = initialState, action: ShoppingListAc
             ingredients[state.editedIngredientIndex] = updateIngredient;
             return {
                 ...state,
-                ingredients: ingredients
+                ingredients: ingredients,
+                editedIngredient: null,
+                editedIngredientIndex: -1
             };
         case ShoppingListActions.DELETE_INGREDIENT:
             const ingredientArray = [...state.ingredients];
             ingredientArray.splice(state.editedIngredientIndex, 1);
             return {
                 ...state,
-                ingredients: ingredientArray
+                ingredients: ingredientArray,
+                editedIngredient: null,
+                editedIngredientIndex: -1
             };
         case ShoppingListActions.START_EDIT:
             const editIngredient = {...state.ingredients[action.payload]}; 
@@ -67,6 +67,13 @@ export function shoppingListReducer(state = initialState, action: ShoppingListAc
                 editedIngredient: editIngredient,
                 editedIngredientIndex: action.payload
             };
+        case ShoppingListActions.STOP_EDIT:
+            return {
+                ...state,
+                editedIngredient: null,
+                editedIngredientIndex: -1
+            };
+            
         default:
             return state;   //系统初始化时，会调用default来初始化
     }

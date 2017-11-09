@@ -11,7 +11,8 @@ const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     // 可以防止懒加载时，使用canload来防止权限没有生效。 当加载后，使用canActivate来判断权限
     { path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule', 
-        canLoad: [AuthGuardService], canActivate: [AuthGuardService]},
+        // canLoad: [AuthGuardService], canActivate: [AuthGuardService]},
+        canActivate: [AuthGuardService]},
     { path: 'shopping-list', component: ShoppingListComponent}
     // { path: '**', redirectTo: '' }
 ];

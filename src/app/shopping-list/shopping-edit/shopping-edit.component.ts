@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { Store } from '@ngrx/store';
 import * as ShoppingListActions from '../store/shopping-list.actions';
-import * as fromShoppingList from '../store/shopping-list.reducers';
+import * as fromApp from '../../store/app.reducers';
 
 @Component({
   selector: 'app-shopping-edit',
@@ -27,11 +27,13 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
 
   // @Output() ingredientAdded = new EventEmitter<Ingredient>();
 
-  constructor(private shoppingListService: ShoppingListService, private stroe: Store<fromShoppingList.AppState>) {
+  constructor(private shoppingListService: ShoppingListService, private stroe: Store<fromApp.AppState>) {
+    // 203集
     // this.subscription = this.shoppingListService.startedEditing.subscribe((index: number) => {
     //   this.editedItemIndex = index;
     //   this.editMode = true;
     //   this.editedItem = this.shoppingListService.getIngredient(index);
+        //点击后给form input赋值
     //   this.form.setValue({
     //     'name': this.editedItem.name,
     //     'amount': this.editedItem.amount
@@ -40,6 +42,9 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    // select 意思
+    // private stroe: Store<{shoppingList: {ingredients: Ingredient[]}]>
+    // 获取{ingredients: Ingredient[]}
     this.subscription = this.stroe.select('shoppingList').subscribe(data => {
       if (data.editedIngredientIndex > -1) {
         this.editedItem = data.editedIngredient;
@@ -79,6 +84,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.stroe.dispatch(new ShoppingListActions.StopEdit());
   }
   
   onClear() {

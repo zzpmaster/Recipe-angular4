@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 
 import * as ShoppingListActions from './store/shopping-list.actions';
-import * as fromShoppingList from './store/shopping-list.reducers';
+import * as fromApp from '../store/app.reducers';
 
 @Component({
   selector: 'app-shopping-list',
@@ -20,11 +20,14 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
 
   constructor(private shoppingListService: ShoppingListService,
-             private store: Store<fromShoppingList.AppState>) { }
+             private store: Store<fromApp.AppState>) { }
 
   ngOnInit() {
     // this.ingredients = this.shoppingListService.getIngredients();
 
+    // select 意思
+    // private stroe: Store<{shoppingList: {ingredients: Ingredient[]}]>
+    // 获取{ingredients: Ingredient[]}
     this.shoppingListState = this.store.select('shoppingList');
 
     // this.subscription = this.shoppingListService.ingredientsChanged.subscribe((ingredients: Ingredient[]) => {

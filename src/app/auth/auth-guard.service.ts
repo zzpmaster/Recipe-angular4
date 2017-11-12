@@ -16,7 +16,9 @@ export class AuthGuardService  implements CanActivate, CanLoad {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean{
     // return this.authService.isAuthenticated();
     console.log('AuthGuardService');
-    return this.store.select('auth').map((authState: fromAuth.State) => {
+    
+    //take: 从源Obervable的开头开始，拿到n个数据项进行发射，其余的数据项将被忽略。
+    return this.store.select('auth').take(1).map((authState: fromAuth.State) => {
       console.log('AuthGuardService: ' + authState.authenticated);
       return authState.authenticated;
     })

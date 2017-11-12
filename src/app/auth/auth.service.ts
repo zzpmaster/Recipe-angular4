@@ -15,6 +15,7 @@ export class AuthService {
 
   constructor(private router: Router, private store: Store<fromApp.AppState>) { }
 
+  // deprecated 被 effects取代
   signupUser(email: string, password: string) {
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then((user) => {
@@ -28,7 +29,7 @@ export class AuthService {
         console.log(error)
       })
   }
-
+  // deprecated 被 effects取代 
   signinUser(email: string, password: string) {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(response => {
@@ -46,7 +47,7 @@ export class AuthService {
 
   logout() {
     firebase.auth().signOut();
-    this.store.dispatch(new AuthAction.Logout());
+    // this.store.dispatch(new AuthAction.Logout());
     // this.token = null;
   }
 

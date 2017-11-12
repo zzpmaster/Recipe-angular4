@@ -8,6 +8,7 @@ import { AuthService } from '../../auth/auth.service';
 
 import * as fromApp from '../../store/app.reducers';
 import * as fromAuth from '../../auth/store/auth.reducers';
+import * as AuthAction from '../../auth/store/auth.action';
 
 @Component({
     selector: 'app-header',
@@ -52,7 +53,8 @@ export class HeaderComponent implements OnInit {
     }
 
     onLogout() {
-        this.authService.logout();
+        // this.authService.logout();   // 将service中的stroe移到这儿
+        this.store.dispatch(new AuthAction.Logout());
     }
 
     // isAuthenticated() {

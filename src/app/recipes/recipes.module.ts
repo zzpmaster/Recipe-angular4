@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import {StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
 
 import { RecipesRoutingModule } from './recipes-routing.module';
 import { SharedModule } from '../shared/shared.module';
@@ -14,6 +15,7 @@ import { RecipesDetailComponent } from './recipes-detail/recipes-detail.componen
 import { RecipesItemComponent } from './recipes-list/recipes-item/recipes-item.component';
 
 import {recipeReducer} from './store/recipes.reducers';
+import { RecipesEffects } from './store/recipes.effects';
 
 @NgModule({
   imports: [
@@ -23,7 +25,8 @@ import {recipeReducer} from './store/recipes.reducers';
     RecipesRoutingModule,
     SharedModule,
     //如果是lazy load的方式加载，需要使用 forFeature来动态添加state
-    StoreModule.forFeature('recipes', recipeReducer)
+    StoreModule.forFeature('recipes', recipeReducer),
+    EffectsModule.forFeature([RecipesEffects])
   ],
   declarations: [
     RecipesComponent,

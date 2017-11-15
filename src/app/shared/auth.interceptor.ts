@@ -27,6 +27,7 @@ export class AuthInterceptor implements HttpInterceptor {
         // });
 
         // return next.handle(copied);
+        // 拦截所有请求，添加参数
         return this.store.select('auth').take(1).switchMap((auth: fromAuth.State) => {
             const copied = req.clone({
                 params: req.params.set('auth', auth.token)

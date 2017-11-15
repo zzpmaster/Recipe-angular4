@@ -39,26 +39,26 @@ export class RecipesService {
     getRecipes() {
         return this.recipes.slice();
     }
-
+    // deprecated
     getRecipe(index: number) {
         return this.recipes.slice()[index];
     }
-
+    // deprecated
     addIngredientsToShoppingList(ingredient: Ingredient[]) {
         // this.shoppingListService.addIngredients(ingredient);
         this.store.dispatch(new ShoppingListActions.AddIngredients(ingredient));
     }
-
+    // deprecated
     addRecipe(recipes: Recipe) {
         this.recipes.push(recipes);
         this.recipeChanged.next(this.recipes.slice());
     }
-
+    // deprecated
     updateRecipe(index: number, recipe: Recipe) {
         this.recipes[index] = recipe;
         this.recipeChanged.next(this.recipes.slice());
     }
-
+    // deprecated
     deleteRecipe(index: number) {
         this.recipes.splice(index, 1);
         this.recipeChanged.next(this.recipes.slice());

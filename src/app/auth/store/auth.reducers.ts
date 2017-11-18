@@ -13,19 +13,19 @@ const initialState: State = {
 export function authReducers(state = initialState, action: AuthAction.AuthActions) {
 
     switch(action.type) {
-        case (AuthAction.SIGNIN):
-        case (AuthAction.SIGNUP):
+        case AuthAction.SIGNIN:
+        case AuthAction.SIGNUP:
             return {
                 ...state,
                 authenticated: true
             };
-        case (AuthAction.LOGOUT):
+        case AuthAction.LOGOUT:
             return {
                 ...state,
                 token: null,
                 authenticated: false
             };
-        case (AuthAction.SET_TOKEN):
+        case AuthAction.SET_TOKEN:
             return {
                 ...state,
                 token: action.payload
